@@ -6,6 +6,7 @@ import es.alejandro.serviciodaw2.repository.TaskRepository
 import org.bson.types.ObjectId
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.http.ResponseEntity.BodyBuilder
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -57,8 +58,8 @@ class TaskController(
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable("id") id: String): ResponseEntity<Unit> {
+    fun delete(@PathVariable("id") id: String): BodyBuilder {
         db.deleteById(id)
-        return ResponseEntity.noContent().build()
+        return ResponseEntity.ok()
     }
 }
