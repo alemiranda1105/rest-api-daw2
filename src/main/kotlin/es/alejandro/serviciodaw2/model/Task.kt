@@ -12,11 +12,16 @@ data class Task (
     @Id val id: ObjectId = ObjectId.get(),
     val name: String,
     val description: String,
-    val completed: Boolean
+    val completed: Boolean,
+    val date: String,
+    val user_id: String
 )
 
 // Class for the body
 class NewTask (
     val name: String,
-    val description: String
+    val description: String,
+    val date: String,
+    val user_id: String,
+    val completed: Boolean
 )

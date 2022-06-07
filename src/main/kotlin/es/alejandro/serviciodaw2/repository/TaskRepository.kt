@@ -7,5 +7,6 @@ import org.springframework.data.mongodb.repository.MongoRepository
 
 interface TaskRepository: MongoRepository<Task, String> {
     fun findOneById(id: ObjectId): Task
+    fun save(task: Task): Task
     override fun deleteAll()
 }
