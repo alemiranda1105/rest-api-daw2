@@ -6,7 +6,6 @@ import es.alejandro.serviciodaw2.repository.TaskRepository
 import org.bson.types.ObjectId
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.http.ResponseEntity.BodyBuilder
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -36,7 +35,6 @@ class TaskController(
 
     @PostMapping
     fun create(@RequestBody request: NewTask): ResponseEntity<Task> {
-        print(request)
         val task = db.save(Task(
             name = request.name,
             description = request.description,
@@ -58,8 +56,8 @@ class TaskController(
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable("id") id: String): BodyBuilder {
+    fun delete(@PathVariable("id") id: String): ResponseEntity<String> {
         db.deleteById(id)
-        return ResponseEntity.ok()
+        return ResponseEntity.ok("Deleted")
     }
 }
